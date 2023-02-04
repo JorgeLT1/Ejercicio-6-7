@@ -1,0 +1,32 @@
+﻿@page "/CalificacionMayor"
+
+<h1>Cálculo de la mayor calificación en un arreglo jagged</h1>
+
+<p>La mayor calificación es: @mayorCalificacion</p>
+
+@code {
+    private int mayorCalificacion;
+    private int[][] matriz = new int[][]
+    {
+        new int[] {90, 80, 70},
+        new int[] {60, 50, 40, 30},
+        new int[] {20, 10}
+    };
+
+    protected override void OnInitialized()
+    {
+        CalcularMayorCalificacion();
+    }
+
+    private void CalcularMayorCalificacion()
+    {
+        mayorCalificacion = int.MinValue;
+        foreach (var subMatriz in matriz)
+        {
+            foreach (var valor in subMatriz)
+            {
+                mayorCalificacion = Math.Max(mayorCalificacion, valor);
+            }
+        }
+    }
+}

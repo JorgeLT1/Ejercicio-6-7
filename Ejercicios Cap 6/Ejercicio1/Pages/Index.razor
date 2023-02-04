@@ -1,0 +1,35 @@
+﻿@page "/Promedio"
+
+<h1>Cálculo del promedio de un arreglo jagged</h1>
+
+<p>El promedio es: @promedio</p>
+
+@code {
+    private double promedio;
+    private int[][] matriz = new int[][]
+    {
+        new int[] {1, 2, 3},
+        new int[] {4, 5, 6, 7},
+        new int[] {8, 9}
+    };
+
+    protected override void OnInitialized()
+    {
+        CalcularPromedio();
+    }
+
+    private void CalcularPromedio()
+    {
+        int sumaTotal = 0;
+        int contador = 0;
+        foreach (var subMatriz in matriz)
+        {
+            foreach (var valor in subMatriz)
+            {
+                sumaTotal += valor;
+                contador++;
+            }
+        }
+        promedio = (double)sumaTotal / contador;
+    }
+}
